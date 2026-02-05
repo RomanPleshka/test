@@ -1,0 +1,19 @@
+"================ USER INFO ================" >  uinfo.txt
+"User:        $(whoami)"                     >> uinfo.txt
+""                                              >> uinfo.txt
+
+"================ NETWORK ==================" >> uinfo.txt
+ipconfig | findstr /R /C:"IPv4"               >> uinfo.txt
+""                                              >> uinfo.txt
+
+"================ SYSTEM ===================" >> uinfo.txt
+systeminfo | findstr /B `
+ /C:"Hostname" `
+ /C:"Domäne" `
+ /C:"Systemmodell" `
+ /C:"Betriebssystemname" `
+ /C:"Registrierter Benutzer" `
+ /C:"Systemtyp"                              >> uinfo.txt
+""                                              >> uinfo.txt
+
+"Generated: $(Get-Date)" >> uinfo.txt
